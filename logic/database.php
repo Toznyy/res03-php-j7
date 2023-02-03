@@ -14,28 +14,36 @@ function loadUser(string $email) : User {
     $parameters = ['email' => $email];
     $query->execute($parameters);
     $users = $query->fetch(PDO::FETCH_ASSOC);
-}
+    $user = new User($users["first_name"], $users["last_name"], $users["email"], $users["password"]);
+    return $user;
+    
+};
 
 function saveUser(User $user) : User {
     
     $db = new PDO(
-    'mysql:host=db.3wa.io;port=3306;dbname=anthonycormier_phpj7',
-    'anthonycormier',
-    'f7af5a3387016b3d12b42619a8ad2703'
+    "mysql:host=db.3wa.io;port=3306;dbname=anthonycormier_phpj7",
+    "anthonycormier",
+    "f7af5a3387016b3d12b42619a8ad2703"
     );
     
-    $query = $db->prepare("INSERT INTO users VALUES (null, :firstName, :lastName, :email, :password)");
+    $query = $db -> prepare("INSERT INTO users VALUES (null, :first_name, :last_name, :email, :password)");
     $parameters = [
-        'firstName' => $user -> getFirstName(),
-        'lastName' => $user -> getLastName(),
+        'first_name' => $user -> getFirstName(),
+        'last_name' => $user -> getLastName(),
         'email' => $user -> getEmail(),
         'password' => $user -> getPassword()
         ];
     
     $query->execute($parameters);
-    $users = $query->fetch(PDO::FETCH_ASSOC);
+    return $user;
 }
 
-$user1 = new User("anto","corm","anto@an.fr","antoanto");
-saveUser($user1);
+$user1 = new User("anto","corm","hola@hello.fr","coucou");
+
+
+// $save = saveUser($user1);
+// var_dump($save);
+$load = loadUser("hola@hello.fr");
+var_dump($load);
 ?>
