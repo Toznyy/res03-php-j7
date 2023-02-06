@@ -1,6 +1,6 @@
 <?php
 
-require("../models/User.php");
+require("models/User.php");
 
 function loadUser(string $email) : User {
     
@@ -40,9 +40,4 @@ function saveUser(User $user) : User {
     return loadUser($user -> getEmail());
 }
 
-$user1 = new User("vicous","victor","victor@vicous.fr","vicoooooous");
-
-
-$save = saveUser($user1);
-var_dump($save);
 ?>
