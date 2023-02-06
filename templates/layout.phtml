@@ -1,30 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
-<head>
-    <meta charset="utf-8">
-    <title>Layout</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-    <?php
-    require("partials/_header.phtml");
+    <head>
+        <meta charset="utf-8">
+        <title>Layout</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
     
-    if ($template === "account") {
-        require("../pages/account.php");
-    }
-    else if ($template === "homepage") {
-        require("../pages/homepage.php");
-    }
-    else if ($template === "login") {
-        require("../pages/login.php");
-    }
-    else if ($template === "register") {
-        require("../pages/register.php");
-    }
-    require("partials/_footer.php");
-    ?>
-</body>
+    <body>
+        <?php
+        require("partials/_header.phtml");
+        
+        require($template."/".$template.".phtml");
+        
+        require("partials/_footer.phtml");
+        ?>
+    </body>
 
 </html>

@@ -5,7 +5,7 @@ if (isset($_GET["route"])) {
     checkROute($_GET["route"]);
 }
 else {
-    checkROute([]);
+    checkROute("");
 };
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
 $template = "account";
-require(".template/layout.phtml");
+require("templates/layout.phtml");
 
 ?>
